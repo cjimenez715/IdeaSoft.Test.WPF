@@ -50,6 +50,7 @@ namespace IdeaSoft.Test.Desktop.UI.Views.ViewModel
         public SavePersonVm(IPersonService personService)
         {
             _personService = personService;
+            SelectedItem = new SavePersonDto();
         }
         #endregion
 
