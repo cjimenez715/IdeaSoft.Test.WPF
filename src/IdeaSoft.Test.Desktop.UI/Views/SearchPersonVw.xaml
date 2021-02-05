@@ -1,0 +1,56 @@
+﻿<Window x:Class="IdeaSoft.Test.Desktop.UI.Views.SearchPersonVw"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:IdeaSoft.Test.Desktop.UI.Views"
+        mc:Ignorable="d"
+        Title="Pesquisa de Pessoa" Height="450" Width="576" ResizeMode="NoResize">
+    <Grid Margin="0,0,0,0" Style="{StaticResource grdContainer}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <DockPanel>
+            <DockPanel DockPanel.Dock="Top">
+                <ListBox Height="40">
+                </ListBox>
+                <Label Style="{StaticResource lblProp}" Height="25" Content="Filtro por Nome/Sobrenome:" HorizontalAlignment="Left" Margin="0,0,0,0" Name="lblName" />
+                <TextBox Height="23" HorizontalAlignment="Left" Margin="5,10,10,0" Name="txtFilter" VerticalAlignment="Top" Width="170" Text="{Binding Filter}" />
+                <Button Content="Filtro" Height="22" x:Name="btnFilter" 
+                        Width="80"  
+                        Command="{Binding FilterCommand}"  />
+                <Button Content="Novo" Height="22" Margin="0,0,0,0" x:Name="btnAdd"  
+                        Width="80"  
+                        Command="{Binding AddCommand}" />
+            </DockPanel>
+            <ListView  Name="PersonGrid"  ItemsSource="{Binding ItemsSource}" SelectedItem="{Binding SelectedItem}" Margin="0,0,0,-396" Height="396" >
+                <ListView.View>
+                    <GridView x:Name="grdPerson">
+                        <GridViewColumn Header="Nome" DisplayMemberBinding="{Binding Name}"  Width="120" />
+                        <GridViewColumn Header="Sobrenome" DisplayMemberBinding="{Binding LastName}" Width="120" />
+                        <GridViewColumn Header="Telefone" DisplayMemberBinding="{Binding PhoneNumber}" Width="120" />
+                        <GridViewColumn Header="Ações">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Width="Auto" Orientation="Horizontal">
+                                        <Button Content="Remover" 
+                                                Margin="5" 
+                                                VerticalAlignment="Center" 
+                                                Command="{Binding Path=DataContext.RemoveCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}" 
+                                                CommandParameter="{Binding}" />
+                                        <Button Content="Editar"
+                                                Margin="5"
+                                                VerticalAlignment="Center"
+                                                Command="{Binding Path=DataContext.EditCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}" 
+                                                CommandParameter="{Binding}" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </DockPanel>
+    </Grid>
+</Window>
