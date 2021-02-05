@@ -43,10 +43,5 @@ namespace IdeaSoft.Test.Desktop.UI.Views
             ((UpdatePersonVm)DataContext).SetPersonId(personId);
             ShowDialog();
         }
-
-        private void Window_Error(object sender, System.Windows.Controls.ValidationErrorEventArgs e)
-        {
-            ((UpdatePersonVm)DataContext).SetValidationRules(e);
-        }
     }
 }

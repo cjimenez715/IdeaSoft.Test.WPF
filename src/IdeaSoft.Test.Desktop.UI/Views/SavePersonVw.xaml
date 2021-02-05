@@ -3,11 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:IdeaSoft.Test.Desktop.UI.Views"
-        xmlns:validator="clr-namespace:IdeaSoft.Test.Desktop.UI.Validators"
         mc:Ignorable="d"
-        Title="Pesquisa de Pessoa" Height="200" Width="300" ResizeMode="NoResize"
-        Validation.Error="Window_Error">
+        Title="Cadastro de Pessoa" Height="200" Width="300" ResizeMode="NoResize">
     <Grid Margin="0,0,0,0" Style="{StaticResource grdContainer}">
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
@@ -15,41 +12,25 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
-            <Label Style="{StaticResource lblHeader}" Content="Salvar Nova Pessoa" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Name="lblTitle" Width="300" />
+            <Label Style="{StaticResource lblHeader}" Content="Cadastrar Nova Pessoa" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Name="lblTitle" Width="300" />
         </Grid>
         <Grid Grid.Row="1">
             <Label Style="{StaticResource lblProp}" Content="Nome:" HorizontalAlignment="Left" Margin="12,7,0,70" Name="lblName" />
-            <TextBox Validation.ErrorTemplate="{StaticResource errorTemplate}" Height="23" HorizontalAlignment="Left" Margin="91,7,0,0" Name="txtName" VerticalAlignment="Top" Width="184" >
-                <TextBox.Text>
-                    <Binding Path="SelectedItem.Name" NotifyOnValidationError="True" UpdateSourceTrigger="PropertyChanged">
-                        <Binding.ValidationRules >
-                            <validator:StringEmptyRule ValidatesOnTargetUpdated="True" />
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>
-            </TextBox>
+            <TextBox Height="23" HorizontalAlignment="Left" 
+                     Margin="91,7,0,0" Name="txtName" VerticalAlignment="Top" 
+                     Width="184" Text="{Binding SelectedItem.Name}" />
 
             <Label Style="{StaticResource lblProp}" Content="Sobrenome:"  Height="32" HorizontalAlignment="Left" Margin="12,0,0,0" Name="lblLastName" VerticalAlignment="Center" />
-            <TextBox Validation.ErrorTemplate="{StaticResource errorTemplate}" Height="23" HorizontalAlignment="Left" Margin="91,35,0,0" Name="txtLastName" VerticalAlignment="Top" Width="184">
-                <TextBox.Text>
-                    <Binding Path="SelectedItem.LastName" NotifyOnValidationError="True" UpdateSourceTrigger="Default">
-                        <Binding.ValidationRules >
-                            <validator:StringEmptyRule ValidatesOnTargetUpdated="True" />
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>
-            </TextBox>
+            <TextBox Height="23" HorizontalAlignment="Left" 
+                     Margin="91,35,0,0" Name="txtLastName" 
+                     VerticalAlignment="Top" Width="184" 
+                     Text="{Binding SelectedItem.LastName}" />
 
             <Label Style="{StaticResource lblProp}" Content="Telefone:" Height="23" HorizontalAlignment="Left" Margin="12,62,0,0" Name="lblPhoneNumber" VerticalAlignment="Top" />
-            <TextBox Validation.ErrorTemplate="{StaticResource errorTemplate}" Height="23" HorizontalAlignment="Left" Margin="91,62,0,0" Name="txtPhoneNumber" VerticalAlignment="Top" Width="184">
-                <TextBox.Text>
-                    <Binding Path="SelectedItem.PhoneNumber" NotifyOnValidationError="True" UpdateSourceTrigger="PropertyChanged">
-                        <Binding.ValidationRules >
-                            <validator:StringEmptyRule ValidatesOnTargetUpdated="True" />
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>
-            </TextBox>
+            <TextBox Height="23" HorizontalAlignment="Left" 
+                     Margin="91,62,0,0" Name="txtPhoneNumber" 
+                     VerticalAlignment="Top" Width="184" 
+                     Text="{Binding SelectedItem.PhoneNumber}"/>
         </Grid>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
@@ -60,16 +41,6 @@
                                             Margin="5" 
                                             VerticalAlignment="Center" 
                                             Command="{Binding SaveCommand}">
-                <Button.Style>
-                    <Style TargetType="Button">
-                        <Setter Property="IsEnabled" Value="False"/>
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding ValidationErrors.Count}" Value="0" >
-                                <Setter Property="IsEnabled" Value="True"/>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
             </Button>
             <Button Grid.Column="1" Content="Cancelar"
                                             Margin="5"

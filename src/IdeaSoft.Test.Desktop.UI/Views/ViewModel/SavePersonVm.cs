@@ -52,7 +52,6 @@ namespace IdeaSoft.Test.Desktop.UI.Views.ViewModel
         public SavePersonVm(IPersonService personService)
         {
             _personService = personService;
-            ValidationErrors = new ObservableCollection<ValidationError>();
         }
         #endregion
 
@@ -75,7 +74,6 @@ namespace IdeaSoft.Test.Desktop.UI.Views.ViewModel
         public void ResetSelectedItem()
         {
             SelectedItem = new SavePersonDto();
-            ValidationErrors.Clear();
         }
         #endregion
 
@@ -114,23 +112,6 @@ namespace IdeaSoft.Test.Desktop.UI.Views.ViewModel
         {
             return true;
         }
-        #endregion
-
-        #region Validation
-        public ObservableCollection<ValidationError> ValidationErrors { get; private set; }
-
-        public void SetValidationRules(ValidationErrorEventArgs e)
-        {
-            if (e.Action == ValidationErrorEventAction.Added)
-            {
-                ValidationErrors.Add(e.Error);
-            }
-            else
-            {
-                ValidationErrors.Remove(e.Error);
-            }
-        }
-
         #endregion
     }
 }

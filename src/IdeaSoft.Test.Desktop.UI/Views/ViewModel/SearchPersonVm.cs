@@ -14,7 +14,6 @@ namespace IdeaSoft.Test.Desktop.UI.ViewModel
         #region Properties
         private ObservableCollection<SearchPersonDto> itemsSource;
         private SearchPersonDto selectedItem;
-        private string IdSavedUpdated;
         private string filter;
         private bool wasDeleted;
 
@@ -81,16 +80,15 @@ namespace IdeaSoft.Test.Desktop.UI.ViewModel
             _saveUI.OnSaveCompletedUI += OnLoadPersonListEvent;
             _updateUI = updateUI;
             _updateUI.OnUpdateCompletedUI += OnLoadPersonListEvent;
-            IdSavedUpdated = string.Empty;
         }
         #endregion
 
         #region Methods
         private void OnLoadPersonListEvent(object sender, System.EventArgs e)
         {
+            MessageBox.Show($"Operação completada com sucesso!", "Atenção", MessageBoxButton.OK, MessageBoxImage.Information);
             Filter = string.Empty;
             _ = LoadPersonListAsync();
-            
         }
 
         public async Task LoadPersonListAsync()

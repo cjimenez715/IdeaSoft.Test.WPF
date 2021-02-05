@@ -40,12 +40,6 @@ namespace IdeaSoft.Test.Desktop.UI.Views
             OnResetClose();
         }
 
-        
-        private void Window_Error(object sender, System.Windows.Controls.ValidationErrorEventArgs e)
-        {
-            ((SavePersonVm)DataContext).SetValidationRules(e);
-        }
-
         private void OnResetClose()
         {
             ((SavePersonVm)DataContext).ResetSelectedItem();
