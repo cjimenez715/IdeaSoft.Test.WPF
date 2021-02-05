@@ -3,9 +3,7 @@ using IdeaSoft.Test.Desktop.UI.Services;
 using IdeaSoft.Test.Desktop.UI.ViewModel;
 using Microsoft.VisualStudio.PlatformUI;
 using System;
-using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace IdeaSoft.Test.Desktop.UI.Views.ViewModel

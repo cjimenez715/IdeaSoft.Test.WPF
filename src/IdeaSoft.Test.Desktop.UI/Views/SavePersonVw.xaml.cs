@@ -1,8 +1,6 @@
 ﻿using IdeaSoft.Test.Desktop.UI.Views.ViewModel;
 using System;
-using System.Collections.ObjectModel;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace IdeaSoft.Test.Desktop.UI.Views
 {
